@@ -1,0 +1,131 @@
+{
+  "normalized_alerts": [
+    {
+      "alert_id": "wz-8842",
+      "source": "wazuh",
+      "vendor": "Wazuh",
+      "timestamp": "2025-08-10T12:03:21Z",
+      "asset": {
+        "hostname": "FIN-LAP-22",
+        "instance_id": null,
+        "ip": "10.10.12.34",
+        "ou_or_vpc": "Finance-Endpoints",
+        "criticality": 8,
+        "owner": "jdoe"
+      },
+      "actor": {
+        "user": "CORP\\jdoe",
+        "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "pid": null
+      },
+      "observables": {
+        "hashes": ["abc123..."],
+        "domains": [],
+        "ips": ["203.0.113.45"],
+        "paths": [],
+        "commands": ["powershell.exe -enc SQBt..."],
+        "detections": ["Windows command execution"]
+      },
+      "base_severity": 7,
+      "raw": {
+        "note": "omitted for brevity in demo; include original Wazuh fields here"
+      }
+    }
+  ],
+  "triage": [
+    {
+      "alert_id": "wz-8842",
+      "mitre_mapping": [
+        {
+          "tactic": "TA0002_Execution",
+          "technique": "T1059.003_PowerShell",
+          "confidence": 0.86,
+          "rationale": "Encoded PowerShell command observed with external egress indicator."
+        },
+        {
+          "tactic": "TA0011_Command and Control",
+          "technique": "T1105_Ingress Tool Transfer",
+          "confidence": 0.52,
+          "rationale": "Suspicious outbound connection during execution suggests potential staging or payload transfer."
+        }
+      ],
+      "risk_score": {
+        "value": 6.4,
+        "drivers": ["base", "criticality", "technique", "spread"],
+        "rationale": "Base severity 7 and asset criticality 8 combined with PowerShell execution (T1059.003); single-host activity kept spread low."
+      },
+      "playbook_recommendations": [
+        {
+          "playbook_id": "pb-powershell-lolbin",
+          "title": "Containment for Malicious PowerShell",
+          "excerpt": "1) Isolate host; 2) Kill process; 3) Collect PS logs; 4) Block IOC; 5) Review user credentials and persistence."
+        }
+      ],
+      "incident_summary": {
+        "who": "CORP\\jdoe on FIN-LAP-22",
+        "what": "Encoded PowerShell launched and contacted 203.0.113.45",
+        "when": "2025-08-10T12:03:21Z",
+        "where": "Finance-Endpoints",
+        "impact": "Potential initial execution enabling payload retrieval on a finance endpoint; credential exposure risk if script harvested secrets.",
+        "severity_rank": "1"
+      },
+      "ticket_draft": {
+        "system": "jira",
+        "title": "[High] Encoded PowerShell on Finance endpoint FIN-LAP-22",
+        "severity": "High",
+        "classification": "Execution / Possible C2 Staging",
+        "mapped_mitre": ["T1059.003", "T1105"],
+        "evidence": {
+          "ioc_summary": {
+            "ips": ["203.0.113.45"],
+            "domains": [],
+            "hashes": ["abc123..."],
+            "paths": []
+          },
+          "key_events": [
+            "2025-08-10T12:03:21Z :: powershell.exe -enc SQBt... on FIN-LAP-22"
+          ]
+        },
+        "recommended_actions": [
+          "Isolate FIN-LAP-22 from the network",
+          "Terminate powershell.exe and any child processes",
+          "Collect PowerShell Operational logs and command history",
+          "Block IP 203.0.113.45 at egress",
+          "Evaluate and reset credentials if persistence or credential access suspected"
+        ],
+        "owner_suggestion": "Endpoint-IR",
+        "references": ["pb-powershell-lolbin"]
+      }
+    }
+  ],
+  "sensor_health": {
+    "coverage": {
+      "overall_pct_active": 100,
+      "by_ou_or_vpc": [
+        {
+          "name": "Finance-Endpoints",
+          "active": 1,
+          "inactive": 0,
+          "delayed": 0,
+          "coverage_pct_active": 100
+        }
+      ]
+    },
+    "blind_spots": [],
+    "recommended_fixes": []
+  },
+  "qa": {
+    "query": null,
+    "query_plan": null,
+    "result_set": [],
+    "answer": null
+  },
+  "ranking": [
+    {
+      "alert_id": "wz-8842",
+      "risk_score": 6.4,
+      "priority": 1
+    }
+  ],
+  "errors": []
+}

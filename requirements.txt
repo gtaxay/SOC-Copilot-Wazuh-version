@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+streamlit
+chromadb
+sentence-transformers
+scikit-learn
+python-dotenv
+pytest
+requests
