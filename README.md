@@ -7,13 +7,10 @@ An **AI-driven Security Operations Center (SOC) automation framework** that inte
 ## 📌 Overview
 
 **SOC Copilot — Wazuh Edition** is a **portfolio-grade cybersecurity automation system** designed to replicate and enhance the analytical workflows of modern SOC environments.  
-It empowers **Tier-1 and Tier-2 SOC analysts** to rapidly ingest, analyze, and act upon security alerts, significantly reducing manual triage effort.
-
-This implementation is built in **Python** and leverages **AI-assisted engineering** to achieve deterministic, reproducible results.
-
-The repository includes **synthetic (non-production) data** for demonstration purposes, ensuring there is no exposure of proprietary or sensitive information.  
-
-The architecture, however, is fully capable of operating with **real-world telemetry** in production SOC environments, with only minor configuration changes required to integrate with live data pipelines.
+- It empowers **Tier-1 and Tier-2 SOC analysts** to rapidly ingest, analyze, and act upon security alerts, significantly reducing manual triage effort.
+- This implementation is built in **Python** and leverages **AI-assisted engineering** to achieve deterministic, reproducible results.
+- The repository includes **synthetic (non-production) data** for demonstration purposes, ensuring there is no exposure of proprietary or sensitive information.  
+- The architecture, however, is fully capable of operating with **real-world telemetry** in production SOC environments, with only minor configuration changes required to integrate with live data pipelines.
 
 ---
 
