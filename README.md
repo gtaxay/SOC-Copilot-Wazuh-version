@@ -143,7 +143,7 @@ This file includes:
 ---
 
 ## Demo / Example
-This example demonstrates how SOC Copilot processes a synthetic Wazuh alert from ingestion through to ticket drafting.
+Below is a truncated example of the structured JSON SOC Copilot produces for direct import into Jira. The full JSON file is available for download.
 
 ### Sample Input
 
@@ -171,125 +171,34 @@ This example demonstrates how SOC Copilot processes a synthetic Wazuh alert from
 
 ```json
 {
-  "normalized_alerts": [
-    {
-      "alert_id": "wz-8842",
-      "source": "wazuh",
-      "vendor": "Wazuh",
-      "timestamp": "2025-08-10T12:03:21Z",
-      "asset": {
-        "hostname": "FIN-LAP-22",
-        "instance_id": null,
-        "ip": "10.10.12.34",
-        "ou_or_vpc": "Finance-Endpoints",
-        "criticality": 8,
-        "owner": "CORP\\jdoe"
-      },
-      "actor": {
-        "user": "CORP\\jdoe",
-        "process": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "pid": null
-      },
-      "observables": {
-        "hashes": ["abc123..."],
-        "domains": [],
+  "ticket_draft": {
+    "system": "jira",
+    "title": "[Medium] FIN-LAP-22 – Execution / Possible C2",
+    "severity": "Medium",
+    "classification": "Execution / Possible C2",
+    "mapped_mitre": ["T1059.003", "T1105"],
+    "evidence": {
+      "ioc_summary": {
         "ips": ["203.0.113.45"],
-        "paths": [],
-        "commands": ["powershell.exe -enc SQBt..."],
-        "detections": ["Windows command execution"]
-      },
-      "base_severity": 7,
-      "raw": {
-        "alert_id": "wz-8842",
-        "source": "wazuh",
-        "vendor": "Wazuh",
-        "timestamp": "2025-08-10T12:03:21Z",
-        "rule": {
-          "level": 7,
-          "description": "Windows command execution"
-        },
-        "agent": {
-          "id": "001",
-          "name": "FIN-LAP-22",
-          "ip": "10.10.12.34"
-        },
-        "data": {
-          "win": {
-            "eventdata": {
-              "CommandLine": "powershell.exe -enc SQBt...",
-              "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-              "User": "CORP\\jdoe",
-              "DestinationIp": "203.0.113.45",
-              "Hashes": "MD5=...,SHA1=...,SHA256=abc123..."
-            },
-            "system": {
-              "computer": "FIN-LAP-22"
-            }
-          }
-        }
+        "hashes": ["abc123..."]
       }
-    }
-  ],
-  "triage": [
-    {
-      "alert_id": "wz-8842",
-      "mitre_mapping": [
-        {
-          "tactic": "TA0002_Execution",
-          "technique": "T1059.003_PowerShell",
-          "confidence": 0.85,
-          "rationale": "Encoded/interactive PowerShell observed in endpoint telemetry."
-        },
-        {
-          "tactic": "TA0011_Command and Control",
-          "technique": "T1105_Ingress Tool Transfer",
-          "confidence": 0.5,
-          "rationale": "External IP contact during suspicious execution."
-        }
-      ],
-      "risk_score": {
-        "value": 6.4,
-        "drivers": ["base", "criticality", "technique", "spread"],
-        "rationale": "Base=7, Crit=8, Tech=6, Spread=0"
-      },
-      "playbook_recommendations": [
-        {
-          "playbook_id": "pb-powershell-lolbin",
-          "title": "Containment for Malicious PowerShell",
-          "excerpt": "1) Isolate host; 2) Kill process; 3) Collect PS logs; 4) Block IOC..."
-        }
-      ],
-      "incident_summary": {
-        "who": "CORP\\jdoe on FIN-LAP-22",
-        "what": "powershell.exe -enc SQBt...",
-        "when": "2025-08-10T12:03:21Z",
-        "where": "Finance-Endpoints",
-        "impact": "Potential security incident on monitored asset",
-        "severity_rank": "1"
-      },
-      "ticket_draft": {
-        "system": "servicenow",
-        "title": "[Medium] Incident on FIN-LAP-22",
-        "severity": "Medium",
-        "classification": "Execution / Possible C2",
-        "mapped_mitre": ["T1059.003", "T1105"],
-        "evidence": {
-          "ioc_summary": {
-            "ips": ["203.0.113.45"],
-            "domains": [],
-            "hashes": ["abc123..."],
-            "paths": []
-          },
-          "key_events": ["2025-08-10T12:03:21Z :: powershell.exe -enc SQBt..."]
-        },
-        "recommended_actions": [
-          "Isolate host",
-          "Terminate malicious processes",
-          "Collect logs",
-          "
+    },
+    "recommended_actions": [
+      "Isolate host",
+      "Terminate malicious processes",
+      "Collect logs",
+      "Block IOCs"
+    ]
+  }
+}
+
 ```
 
+#### Full Output
 
+```
+  link
+```
 
 ## Schema Reference
 ### Normalized Alert Schema
