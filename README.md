@@ -9,8 +9,10 @@ An **AI-driven Security Operations Center (SOC) automation framework** that inte
 **SOC Copilot — Wazuh Edition** is a **portfolio-grade cybersecurity automation system** designed to replicate and enhance the analytical workflows of modern SOC environments.  
 It empowers **Tier-1 and Tier-2 SOC analysts** to rapidly ingest, analyze, and act upon security alerts, significantly reducing manual triage effort.
 
-This implementation is built in **Python** and leverages **AI-assisted engineering** to achieve deterministic, reproducible results.  
+This implementation is built in **Python** and leverages **AI-assisted engineering** to achieve deterministic, reproducible results.
+
 The repository includes **synthetic (non-production) data** for demonstration purposes, ensuring there is no exposure of proprietary or sensitive information.  
+
 The architecture, however, is fully capable of operating with **real-world telemetry** in production SOC environments, with only minor configuration changes required to integrate with live data pipelines.
 
 ---
@@ -70,3 +72,53 @@ The architecture, however, is fully capable of operating with **real-world telem
         │
         ▼
 [Output] → JSON with triage, rankings, sensor health, and summaries
+```
+## Repository Structure
+
+SOC-Copilot-Wazuh-version/
+├── app/
+│   ├── api/                 # API endpoints (FastAPI)
+│   ├── models/              # Pydantic schemas
+│   └── services/            # Ingest, scoring, MITRE mapping logic
+├── data/
+│   └── samples/             # Synthetic telemetry and AI-generated outputs
+├── tests/                   # Unit tests
+├── tools/                   # Demo scripts
+├── ui/                      # Streamlit/Flask-based user interface
+├── requirements.txt         # Python dependencies
+└── README.md
+
+---
+
+## Setup Instructions
+
+###1. Clone the Repository
+git clone https://github.com/gtaxay/SOC-Copilot-Wazuh-version.git
+cd SOC-Copilot-Wazuh-version
+
+###2. Create and Activate a Virtual Environment
+Mac/Linux:
+
+  python3 -m venv venv
+  source venv/bin/activate
+
+Windows (PowerShell):
+
+  python -m venv venv
+  venv\Scripts\Activate.ps1
+
+###3. Install Dependencies
+
+  pip install -r requirements.txt
+  
+###4. Run the UI
+
+  python ui/app.py
+
+###5. Run the Demo Pipeline
+
+  bash tools/demo.sh
+
+---
+
+
