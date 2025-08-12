@@ -92,32 +92,33 @@ SOC-Copilot-Wazuh-version/
 
 ## Setup Instructions
 
-###1. Clone the Repository
+### 1. Clone the Repository
 git clone https://github.com/gtaxay/SOC-Copilot-Wazuh-version.git
 cd SOC-Copilot-Wazuh-version
 
-###2. Create and Activate a Virtual Environment
+### 2. Create and Activate a Virtual Environment
 Mac/Linux:
-
+```
   python3 -m venv venv
   source venv/bin/activate
-
+```
 Windows (PowerShell):
-
+```
   python -m venv venv
   venv\Scripts\Activate.ps1
-
-###3. Install Dependencies
-
+```
+### 3. Install Dependencies
+```
   pip install -r requirements.txt
-  
-###4. Run the UI
-
+```
+### 4. Run the UI
+```
   python ui/app.py
-
-###5. Run the Demo Pipeline
-
+```
+### 5. Run the Demo Pipeline
+```
   bash tools/demo.sh
+```
 
 ---
 
