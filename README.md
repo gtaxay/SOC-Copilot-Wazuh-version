@@ -1,63 +1,50 @@
-# SOC Copilot — Wazuh Version
+# SOC Copilot — Wazuh Edition
 
-**AI-powered SOC automation** that ingests Wazuh telemetry, normalizes and enriches alerts, maps to MITRE ATT&CK, calculates transparent risk scores, retrieves playbooks, drafts tickets, evaluates sensor health, and supports SOC analyst Q&A — all through a single automated pipeline.
+An **AI-driven Security Operations Center (SOC) automation framework** that integrates Wazuh telemetry with MITRE ATT&CK mapping, transparent risk scoring, automated playbook retrieval, incident ticket drafting, sensor health analysis, and SOC analyst Q&A — delivering a complete, end-to-end triage workflow.
 
 ---
 
 ## 📌 Overview
 
-This project is a **portfolio-grade, AI-assisted SOC Copilot** that demonstrates real-world integration of:
-- **Security telemetry ingestion** (Wazuh, Zeek, AWS CloudTrail)
-- **Data normalization & enrichment**
-- **MITRE ATT&CK mapping**
-- **Deterministic risk scoring**
-- **Automated playbook retrieval**
-- **Incident ticket drafting (Jira/ServiceNow)**
-- **Sensor health evaluation**
-- **Natural language Q&A over incidents**
+**SOC Copilot — Wazuh Edition** is a **portfolio-grade cybersecurity automation system** designed to replicate and enhance the analytical workflows of modern SOC environments.  
+It empowers **Tier-1 and Tier-2 SOC analysts** to rapidly ingest, analyze, and act upon security alerts, significantly reducing manual triage effort.
 
-Built with **Python** and leveraging **AI prompting techniques** to generate the core logic and schemas, this project mirrors workflows used in modern SOCs, enabling Tier-1 and Tier-2 analysts to reduce manual triage time.
+This implementation is built in **Python** and leverages **AI-assisted engineering** to achieve deterministic, reproducible results.  
+The repository includes **synthetic (non-production) data** for demonstration purposes, ensuring there is no exposure of proprietary or sensitive information.  
+The architecture, however, is fully capable of operating with **real-world telemetry** in production SOC environments, with only minor configuration changes required to integrate with live data pipelines.
 
 ---
 
-## 🚀 Features
+## 🧠 Why Use Synthetic Data
 
-- **Unified Telemetry Normalization**  
-  Converts raw Wazuh JSON alerts into a consistent schema for cross-source analysis.
-
-- **MITRE ATT&CK Mapping**  
-  Uses observable indicators to infer tactics/techniques with confidence scoring and clear rationales.
-
-- **Transparent Risk Scoring**  
-  Applies a fixed-weight, reproducible formula using base severity, asset criticality, mapped technique risk, and lateral/volume spread.
-
-- **Playbook Recommendations**  
-  Retrieves the most relevant containment/eradication playbooks via hybrid technique/tag matching.
-
-- **Automated Ticket Drafting**  
-  Generates fully structured tickets (Jira/ServiceNow) with mapped MITRE techniques, IOC summaries, key events, recommended actions, and references.
-
-- **Sensor Health & Coverage Analysis**  
-  Reports active/inactive/delayed coverage by OU/VPC and highlights blind spots.
-
-- **Analyst-Friendly Output**  
-  Provides a single JSON output with normalized alerts, triage data, summaries, rankings, and optional Q&A results.
+- **Security and Privacy**: Protects against accidental leakage of sensitive or proprietary incident details.  
+- **Repeatable Demonstrations**: Synthetic datasets ensure consistent outputs for demos, documentation, and testing.  
+- **Adaptability**: All processing logic is agnostic to whether input data is synthetic or live, meaning production deployment requires only pointing the ingestion service at the desired telemetry source.
 
 ---
 
-## 🧠 How AI Was Used in Development
+## 🚀 Key Features
 
-- **Prompt-Engineered Schemas**  
-  The entire normalized alert schema, ATT&CK mapping rules, and risk scoring formulas were designed using structured AI prompts for deterministic output.
+- **Multi-Source Telemetry Normalization**  
+  Ingests alerts from **Wazuh** (primary), Zeek, AWS CloudTrail, and other supported sources, transforming them into a unified schema.
 
-- **Few-Shot JSON Examples**  
-  AI generated realistic example telemetry and triage outputs (`data/samples/telemetry.json`, `data/samples/llm_output.json`) to validate the pipeline.
+- **MITRE ATT&CK Technique Mapping**  
+  Automatically maps observable indicators to tactics and techniques (e.g., `T1059.003 – PowerShell`) with confidence scores and concise justifications.
 
-- **Code Scaffolding**  
-  Core service modules in `app/services` (e.g., `ingest.py`, `score.py`, `attack_map.py`) were initially drafted via AI, then refined and tested manually.
+- **Deterministic Risk Scoring**  
+  Employs a transparent, fixed-weight scoring model considering base severity, asset criticality, technique risk, and spread indicators — with escalation rules for critical contexts.
 
-- **README & Documentation Drafting**  
-  This very README was AI-assisted, with refinements to ensure recruiter-friendly, technically accurate presentation.
+- **Contextual Playbook Retrieval**  
+  Matches mapped techniques and tags to relevant containment and eradication procedures.
+
+- **Automated Incident Ticket Drafting**  
+  Produces fully formatted Jira or ServiceNow tickets with MITRE mappings, IOC summaries, key evidence, recommended actions, and playbook references.
+
+- **Sensor Health & Coverage Insights**  
+  Reports endpoint coverage metrics by organizational unit (OU) or VPC and identifies blind spots.
+
+- **Structured, Analyst-Ready Output**  
+  Generates a consolidated JSON containing normalized alerts, triage results, incident summaries, sensor health metrics, and prioritized rankings.
 
 ---
 
@@ -67,19 +54,19 @@ Built with **Python** and leveraging **AI prompting techniques** to generate the
 [Telemetry Sources: Wazuh / Zeek / AWS CloudTrail]
         │
         ▼
-[Ingest Service] → normalize → enrich from asset inventory
+[Ingest Service] → Normalize → Enrich from asset inventory
         │
         ▼
-[MITRE Mapping] → map observables to tactics/techniques
+[MITRE Mapping] → Map observables to tactics/techniques
         │
         ▼
-[Risk Scoring] → deterministic formula + escalation
+[Risk Scoring] → Apply deterministic formula + escalation
         │
         ▼
-[Playbook Retrieval] → match to mapped techniques
+[Playbook Retrieval] → Match by technique and tags
         │
         ▼
-[Ticket Drafting] → Jira/ServiceNow format
+[Ticket Drafting] → Jira/ServiceNow formats
         │
         ▼
-[Output] → JSON file with all sections + rankings
+[Output] → JSON with triage, rankings, sensor health, and summaries
