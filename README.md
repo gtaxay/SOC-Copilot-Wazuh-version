@@ -197,7 +197,7 @@ Below is a truncated example of the structured JSON SOC Copilot produces for dir
 #### Full Output
 
 ```
-  link
+  https://raw.githubusercontent.com/gtaxay/SOC-Copilot-Wazuh-version/refs/heads/main/data/samples/jira_ticket_output.json?token=GHSAT0AAAAAADHYE7ERIGJX6LQQLRGUHF3A2E2WNFA
 ```
 
 ## Schema Reference
