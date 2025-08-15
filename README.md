@@ -1,6 +1,6 @@
 # SOC Copilot — Wazuh Edition
 
-An **AI-driven Security Operations Center (SOC) automation framework** that integrates Wazuh telemetry with MITRE ATT&CK mapping, transparent risk scoring, automated playbook retrieval, incident ticket drafting, sensor health analysis, and SOC analyst Q&A — delivering a complete, end-to-end triage workflow.
+An **Security Operations Center (SOC) automation framework** that integrates Wazuh telemetry with MITRE ATT&CK mapping, transparent risk scoring, automated playbook retrieval, incident ticket drafting, sensor health analysis, and SOC analyst Q&A — delivering a complete, end-to-end triage workflow.
 
 ---
 
