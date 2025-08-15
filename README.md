@@ -72,6 +72,7 @@ An **AI-driven Security Operations Center (SOC) automation framework** that inte
 ```
 ## Repository Structure
 
+```
 SOC-Copilot-Wazuh-version/
 ├── app/
 │   ├── api/                 # API endpoints (FastAPI)
@@ -84,6 +85,7 @@ SOC-Copilot-Wazuh-version/
 ├── ui/                      # Streamlit/Flask-based user interface
 ├── requirements.txt         # Python dependencies
 └── README.md
+```
 
 ---
 
