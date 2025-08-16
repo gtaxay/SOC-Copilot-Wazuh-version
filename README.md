@@ -1,6 +1,6 @@
 # SOC Copilot — Wazuh Edition
 
-An **Security Operations Center (SOC) automation framework** that integrates Wazuh telemetry with MITRE ATT&CK mapping, transparent risk scoring, automated playbook retrieval, incident ticket drafting, sensor health analysis, and SOC analyst Q&A — delivering a complete, end-to-end triage workflow.
+This project is a **Security Operations Center (SOC) automation framework** that integrates Wazuh telemetry with MITRE ATT&CK mapping, transparent risk scoring, automated playbook retrieval, incident ticket drafting, sensor health analysis, and SOC analyst Q&A. It delivers a complete, end-to-end triage workflow.
 
 ---
 
@@ -18,7 +18,7 @@ An **Security Operations Center (SOC) automation framework** that integrates Waz
 
 - **Security and Privacy**: Protects against accidental leakage of sensitive or proprietary incident details.  
 - **Repeatable Demonstrations**: Synthetic datasets ensure consistent outputs for demos, documentation, and testing.  
-- **Adaptability**: All processing logic is agnostic to whether input data is synthetic or live, meaning production deployment requires only pointing the ingestion service at the desired telemetry source.
+- **Adaptability**: All processing logic is the same to whether input data is synthetic or live, meaning production deployment requires only pointing the ingestion service at the desired telemetry source.
 
 ---
 
@@ -31,7 +31,7 @@ An **Security Operations Center (SOC) automation framework** that integrates Waz
   Automatically maps observable indicators to tactics and techniques (e.g., `T1059.003 – PowerShell`) with confidence scores and concise justifications.
 
 - **Deterministic Risk Scoring**  
-  Employs a transparent, fixed-weight scoring model considering base severity, asset criticality, technique risk, and spread indicators — with escalation rules for critical contexts.
+  Employs a transparent, fixed-weight scoring model considering base severity, asset criticality, technique risk, and spread indicators. It also includes escalation rules for critical contexts.
 
 - **Contextual Playbook Retrieval**  
   Matches mapped techniques and tags to relevant containment and eradication procedures.
@@ -142,7 +142,7 @@ This file includes:
 ---
 
 ## Demo / Example
-Below is a truncated example of the structured JSON SOC Copilot produces for direct import into Jira. The full JSON file is available for download.
+Below is a shortened example of the structured JSON SOC Copilot produces for direct import into Jira. The full JSON file is available for download.
 
 ### Sample Input
 
